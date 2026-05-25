@@ -168,6 +168,10 @@ export default function App() {
     setPendingAvatar(avatar);
   };
 
+  const saveSelectedAvatar = () => {
+    setSelectedAvatar(null);
+  };
+
   return (
     <main className="graduation-wall">
       <img className="background-photo" src={scene.background} alt={`University of Sydney ${scene.label}`} />
@@ -247,7 +251,11 @@ export default function App() {
       {isGenerating && <LoadingOverlay activeStep={loadingStep} />}
 
       {selectedAvatar && (
-        <AvatarInfoPanel avatar={selectedAvatar} onClose={() => setSelectedAvatar(null)} />
+        <AvatarInfoPanel
+          avatar={selectedAvatar}
+          onClose={() => pickUpAvatar(selectedAvatar)}
+          onSave={saveSelectedAvatar}
+        />
       )}
     </main>
   );
